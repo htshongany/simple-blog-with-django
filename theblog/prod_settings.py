@@ -7,7 +7,7 @@ TEMPLATE_DEBUG = False
 
 ALLOWED_HOSTS = ['henock.herokuapp.com']
 
-MIDDLEWARE = [
+MIDDLEWARE += [
 
 	'whitenoise.middleware.WhiteNoiseMiddleware',
 
