@@ -1,1 +1,1 @@
-web: gunicorn henock.wsgi
+web: gunicorn theblog.wsgi
