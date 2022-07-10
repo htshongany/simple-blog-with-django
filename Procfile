@@ -1,1 +1,1 @@
-web: gunicorn theblog.wsgi --log-file
+web: gunicorn henock.wsgi
