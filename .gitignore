@@ -1,0 +1,5 @@
+env
+*.pyc
+heroku.md
+staticfiles
+db.sqlite3
