@@ -18,7 +18,7 @@ class BlogPost(models.Model):
 	content = RichTextField(blank=True , null=True)
 	description = models.TextField()
 
-	category = models.ForeignKey(Category, on_delete=models.CASCADE)
+	category = models.ManyToManyField(Category,blank=True)
 
 	# def save(self, *args, **kwargs):
 		
