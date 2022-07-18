@@ -3,11 +3,12 @@
 {% block title %}article | {{object.title}}{% endblock %}
 
 {% block content %}
+{% if object.published == True %}
 <article>
-
 <h1 class="main-title">{{object.title}}</h1>
 <p>{{object.content|safe}}</p>
-
 </article>
-
+{% else %}
+<p>Vous n'avais pas le droit d'être là 😅</p>
+{% endif %}
 {% endblock %}

@@ -1,20 +1,33 @@
 {% extends "base.html" %}
 
 {% block title %}
-article
+article | list
 {% endblock %}
 
 {% block content %}
 <br>
 {% for post in object_list %}
 
-<h2>{{post.title}}</h2>
-<a href="{% url 'detailpost' post.pk %}">
-<p>{{post.description}}</p>
-</a>
-<hr>
+
+	{% if post.published == True %}
+
+	<h2>{{post.title}}</h2>
+	<a href="{% url 'detailpost' post.pk %}">
+	<p>{{post.description}}</p>
+	</a>
+	<hr>
+	{% else %}
+
+		{% if user.is_authenticated %}
+		<h2>{{post.title}}</h2>
+		<a href="{% url 'detailpost' post.pk %}">
+		<p>{{post.description}}</p>
+		</a>
+		<hr>
+		{% endif %}
+
+	{% endif %}
 
 {% endfor %}
 
 {% endblock %}
-
