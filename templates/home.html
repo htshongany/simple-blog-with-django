@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}
+article | list
+{% endblock %}
+
+{% block content %}
+<br>
+
+<ul>
+	{% for cats in category %}
+	<li>{{cats.name}}</li>
+	{% endfor %}
+</ul>
+
+{% for post in posts %}
+
+
+	{% if post.published == True %}
+
+	<h2>{{post.title}}</h2>
+	<a href="{% url 'detailpost' post.pk %}">
+	<p>{{post.description}}</p>
+	</a>
+	<hr>
+	{% else %}
+
+		{% if user.is_authenticated %}
+		<h2>{{post.title}}</h2>
+		<a href="{% url 'detailpost' post.pk %}">
+		<p>{{post.description}}</p>
+		</a>
+		<hr>
+		{% endif %}
+
+	{% endif %}
+
+{% endfor %}
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+{% endblock %}

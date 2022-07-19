@@ -1,11 +1,16 @@
-from django.shortcuts import render
+from django.shortcuts import render , get_object_or_404
 from django.views.generic import ListView , DetailView
-from .models import BlogPost
+from .models import BlogPost , Category
 # Create your views here.
 
 def home(request):
-	context = {}
-	return render(request, 'base.html', context)
+	context = {
+	'posts':BlogPost.objects.all(),
+	'category': Category.objects.all()
+
+	}
+
+	return render(request, 'home.html', context)
 
 class ListPosts(ListView):
 	model = BlogPost
