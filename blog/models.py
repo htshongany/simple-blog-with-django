@@ -1,7 +1,7 @@
 from django.db import models
 from ckeditor.fields import RichTextField
 from django.utils.html import escape
-
+from django.urls import reverse
 # Create your models here.
 
 class Category(models.Model):
@@ -19,6 +19,9 @@ class BlogPost(models.Model):
 	description = models.TextField()
 
 	category = models.ManyToManyField(Category,blank=True)
+
+	def get_absolute_url(self):
+		return reverse('detailpost',kwargs={'pk':self.pk})
 
 	# def save(self, *args, **kwargs):
 		
