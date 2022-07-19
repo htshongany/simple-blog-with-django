@@ -9,6 +9,7 @@ def home(request):
 
 class ListPosts(ListView):
 	model = BlogPost
+	paginate_by = 2
 	template_name = "list.html"
 
 class DetailPost(DetailView):
