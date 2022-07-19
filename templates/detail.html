@@ -9,6 +9,13 @@
 <p>{{object.content|safe}}</p>
 </article>
 {% else %}
+{% if user.is_authenticated %}
+<article>
+<h1 class="main-title">{{object.title}}</h1>
+<p>{{object.content|safe}}</p>
+</article>
+{% else%}
 <p>Vous n'avais pas le droit d'être là 😅</p>
+{% endif %}
 {% endif %}
 {% endblock %}
