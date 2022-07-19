@@ -31,4 +31,4 @@ class BlogPost(models.Model):
 
 
 	def __str__(self):
-		return f"{self.title}"
+		return f"{self.title} | published : {self.published}"
