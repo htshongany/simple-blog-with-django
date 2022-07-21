@@ -4,13 +4,13 @@ from .models import BlogPost , Category
 from django.core.paginator import Paginator
 # Create your views here.
 
-def home(request):
-	context = {
-	'posts':BlogPost.objects.all(),
-	'category': Category.objects.all()
-	}
+# def home(request):
+# 	context = {
+# 	'posts':BlogPost.objects.all(),
+# 	'category': Category.objects.all()
+# 	}
 
-	return render(request, 'home.html', context)
+# 	return render(request, 'home.html', context)
 
 def category_view(request , cats):
 
@@ -19,8 +19,9 @@ def category_view(request , cats):
 	paginator = Paginator(BlogPost.objects.filter(category=cats,published=True),2)
 
 	context = {
-	'page_obj': paginator.get_page(request.GET.get('page'))	
-
+	'object_list': paginator.get_page(request.GET.get('page')),
+	'category': Category.objects.all(),
+	
 	}
 
 	return render(request, 'category.html', context)
@@ -29,7 +30,8 @@ def list_post_view(request):
 
 	paginator = Paginator(BlogPost.objects.filter(published=True),2)
 	context = {
-	'object_list': paginator.get_page(request.GET.get('page'))	
+	'object_list': paginator.get_page(request.GET.get('page')),
+	'category': Category.objects.all(),
 
 	}
 	return render(request, 'list.html', context)

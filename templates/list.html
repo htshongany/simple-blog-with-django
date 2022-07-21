@@ -5,25 +5,28 @@ article | list
 {% endblock %}
 
 {% block content %}
-<br>
+<div class="list-article-content">
+<div class="left">
 {% for post in object_list %}
 
 
 	{% if post.published == True %}
-
+	<div class="list-content">
 	<h2>{{post.title}}</h2>
 	<a href="{% url 'detailpost' post.pk %}">
 	<p>{{post.description}}</p>
 	</a>
-	<hr>
+	</div>
+		<hr class="hr-center">
 	{% else %}
 
 		{% if user.is_staff %}
+		<div class="list-content">
 		<h2>{{post.title}}</h2>
 		<a href="{% url 'detailpost' post.pk %}">
 		<p>{{post.description}}</p>
 		</a>
-		<hr>
+		</div>
 		{% endif %}
 
 	{% endif %}
@@ -47,5 +50,15 @@ article | list
         {% endif %}
     </span>
 </div>
+</div>
 
+<div class="right">
+<ul>
+	{% for cats in category %}
+	<a href="{% url 'listcategory' cats.pk %}"><li>{{cats.name}}</li></a>
+	{% endfor %}
+</ul>
+</div>
+
+</div>
 {% endblock %}

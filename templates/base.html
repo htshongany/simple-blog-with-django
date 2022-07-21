@@ -16,14 +16,13 @@
 
 <nav>
 	<ul>
-		<li>theblog</li>
-		<li>
-			<ul>
-				<a href="{% url 'home' %}"><li>home</li></a>
-				<a href="{% url 'listposts' %}"><li>posts</li></a>
-			</ul>
-		</li>
+		<a href="{% url 'listposts' %}"><li><span>the</span><span>blog</span></li></a>
+<!-- 		<a href="{% url 'listposts' %}"><li>articles</li></a> -->
 	</ul>
+	<form>
+		<input type="search" placeholder="Search..">
+		<input type="submit" name="">
+	</form>
 </nav>
 
 {% block content %}
