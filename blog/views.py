@@ -16,7 +16,7 @@ def category_view(request , cats):
 
 	get_object_or_404(Category.objects.filter(id=cats))
 
-	paginator = Paginator(BlogPost.objects.filter(category=cats),2)
+	paginator = Paginator(BlogPost.objects.filter(category=cats,published=True),2)
 
 	context = {
 	'page_obj': paginator.get_page(request.GET.get('page'))	
@@ -25,10 +25,15 @@ def category_view(request , cats):
 
 	return render(request, 'category.html', context)
 
-class ListPosts(ListView):
-	model = BlogPost
-	paginate_by = 2
-	template_name = "list.html"
+def list_post_view(request):
+
+	paginator = Paginator(BlogPost.objects.filter(published=True),2)
+	context = {
+	'object_list': paginator.get_page(request.GET.get('page'))	
+
+	}
+	return render(request, 'list.html', context)
+
 
 class DetailPost(DetailView):
 	model = BlogPost
