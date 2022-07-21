@@ -8,7 +8,6 @@ def home(request):
 	context = {
 	'posts':BlogPost.objects.all(),
 	'category': Category.objects.all()
-
 	}
 
 	return render(request, 'home.html', context)
@@ -23,8 +22,6 @@ def category_view(request , cats):
 	'page_obj': paginator.get_page(request.GET.get('page'))	
 
 	}
-
-
 
 	return render(request, 'category.html', context)
 

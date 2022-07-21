@@ -18,7 +18,7 @@ article | list
 	<hr>
 	{% else %}
 
-		{% if user.is_authenticated %}
+		{% if user.is_staff %}
 		<h2>{{post.title}}</h2>
 		<a href="{% url 'detailpost' post.pk %}">
 		<p>{{post.description}}</p>
