@@ -6,14 +6,7 @@ article | list
 
 {% block content %}
 <br>
-
-<ul>
-	{% for cats in category %}
-	<a href="{% url 'listcategory' cats.pk %}"><li>{{cats.name}}</li></a>
-	{% endfor %}
-</ul>
-
-{% for post in posts %}
+{% for post in page_obj  %}
 
 
 	{% if post.published == True %}
