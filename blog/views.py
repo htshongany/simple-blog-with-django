@@ -24,7 +24,7 @@ def category_view(request , cats):
 	
 	}
 
-	return render(request, 'category.html', context)
+	return render(request, 'blog/category.html', context)
 
 def list_post_view(request):
 
@@ -34,9 +34,9 @@ def list_post_view(request):
 	'category': Category.objects.all(),
 
 	}
-	return render(request, 'list.html', context)
+	return render(request, 'blog/list.html', context)
 
 
 class DetailPost(DetailView):
 	model = BlogPost
-	template_name = "detail.html"
+	template_name = "blog/detail.html"
