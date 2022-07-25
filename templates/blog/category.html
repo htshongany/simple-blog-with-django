@@ -57,7 +57,7 @@ article | list
 <div class="right">
 <ul>
 	{% for cats in category %}
-	<a href="{% url 'listcategory' cats.pk %}"><li>{{cats.name}}</li></a>
+	<li><a href="{% url 'listcategory' cats.pk %}">{{cats.name}}</a></li>
 	{% endfor %}
 </ul>
 </div>

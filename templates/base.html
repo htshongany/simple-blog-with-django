@@ -1,12 +1,12 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
-	<script type="text/javascript" src="{% static 'js/app.js' %}"></script>
+	<script src="{% static 'js/app.js' %}"></script>
 	<title>{% block title %}{% endblock %}</title>
 </head>
 <body>
@@ -16,12 +16,11 @@
 
 <nav>
 	<ul>
-		<a href="{% url 'listposts' %}"><li><span>the</span><span>blog</span></li></a>
-<!-- 		<a href="{% url 'listposts' %}"><li>articles</li></a> -->
+		<li><a href="{% url 'listposts' %}"><span>the</span><span>blog</span></a></li>
 	</ul>
 	<form>
 		<input type="search" placeholder="Search..">
-		<input type="submit" name="">
+		<input type="submit">
 	</form>
 </nav>
 
