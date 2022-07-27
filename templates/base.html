@@ -18,7 +18,7 @@
 	<ul>
 		<li><a href="{% url 'listposts' %}"><span>the</span><span>blog</span></a></li>
 	</ul>
-	<form method="GET" action="{% url 'search-bar' %}">
+	<form method="POST" action="{% url 'search-bar' %}">
 		<input type="search" name='search' value="{{search}}" placeholder="Search..">
 		<button type="submit">submit</button>
 		{% csrf_token %}

@@ -8,7 +8,7 @@ POSTS_PER_PAGE = 2
 
 def search_view(request):
     object_list , search  = _search_posts(request)
-    context = {"search": search , 'object_list':object_list}
+    context = {"search": search , 'object_list':object_list,'category': Category.objects.all(),}
     
     return render(request, "blog/search.html",context)
 
@@ -43,19 +43,21 @@ class DetailPost(DetailView):
 
 def _search_posts(request):
 
-    search = request.GET.get("search")
-    page = request.GET.get("page")
+    search = request.POST.get("search")
+    # page = request.GET.get("page")
     object_list = BlogPost.objects.all()
 
     if search:
         object_list = object_list.filter(title__icontains=search)
 
-    paginator = Paginator(object_list, POSTS_PER_PAGE)
-    try:
-        object_list = paginator.page(page)
-    except PageNotAnInteger:
-        object_list = paginator.page(1)
-    except EmptyPage:
-        object_list = paginator.page(paginator.num_pages)
+    # paginator = Paginator(object_list, POSTS_PER_PAGE)
+    # try:
+    #     object_list = paginator.page(search)
+    # except PageNotAnInteger:
+    #     object_list = paginator.page(1)
+    # except EmptyPage:
+    #     object_list = paginator.page(paginator.num_pages)
+
+    # print("\n \n \n \n \n \n \n ->",object_list.number ,"\n \n \n \n \n \n \n ")
 
     return object_list , search or ""

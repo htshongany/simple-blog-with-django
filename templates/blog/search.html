@@ -10,47 +10,22 @@
 
 
 	{% if post.published == True %}
-	<div class="list-content">
-	<h2>{{post.title}}</h2>
-	<hr>
-	<a href="{% url 'detailpost' post.pk %}">
-	<p>{{post.description}}</p>
-	</a>
-	</div>
-		<hr class="hr-center">
+	<!-- <div class="list-content"> -->
+	<a href="{% url 'detailpost' post.pk %}" title='{{post.description}}'>{{post.title}}</a><br>
+	<!-- </div> -->
+		<!-- <hr class="hr-center"> -->
 	{% else %}
 
 		{% if user.is_staff %}
-		<div class="list-content">
-		<h2>{{post.title}}</h2>
-		<hr>
-		<a href="{% url 'detailpost' post.pk %}">
-		<p>{{post.description}}</p>
-		</a>
-		</div>
+		<!-- <div class="list-content"> -->
+		<a href="{% url 'detailpost' post.pk %}" title='{{post.description}}' >{{post.title}}</a><br>
+		<!-- </div> -->
 		{% endif %}
 
 	{% endif %}
 
 {% endfor %}
 
-<div class="pagination">
-    <span class="step-links">
-        {% if object_list.has_previous %}
-            <a href="?page=1">&laquo; first</a>
-            <a href="?page={{ object_list.previous_page_number }}">previous</a>
-        {% endif %}
-
-        <span class="current">
-            Page {{ object_list.number }} of {{ object_list.paginator.num_pages }}.
-        </span>
-
-        {% if object_list.has_next %}
-            <a href="?page={{ object_list.next_page_number }}">next</a>
-            <a href="?page={{ object_list.paginator.num_pages }}">last &raquo;</a>
-        {% endif %}
-    </span>
-</div>
 </div>
 
 <div class="right">
