@@ -1,13 +1,11 @@
 {% extends "base.html" %}
 
-{% block title %}
-article | list
-{% endblock %}
+{% block title %}article | search{% endblock %}
 
 {% block content %}
-<div id="search-results" class="list-article-content">
+{% if search %}
+<div class="list-article-content">
 <div class="left">
-
 {% for post in object_list %}
 
 
@@ -64,4 +62,7 @@ article | list
 </div>
 
 </div>
+{% else %}
+<p>rien trouver ...</p>
+{% endif %}
 {% endblock %}
