@@ -2,7 +2,7 @@
 {% block title %}article | search{% endblock %}
 {% block content %}
 
-{% if search%}
+{% if search and object_list.exists %}
 
 <div class="search-list-article-content">
 

@@ -45,10 +45,13 @@ def _search_posts(request):
 
     search = request.POST.get("search")
     # page = request.GET.get("page")
-    object_list = BlogPost.objects.all()
+    object_list = BlogPost.objects.filter(published=True)
+
+
 
     if search:
         object_list = object_list.filter(title__icontains=search)
+        
 
     # paginator = Paginator(object_list, POSTS_PER_PAGE)
     # try:
