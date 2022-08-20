@@ -15,8 +15,8 @@ class BlogPost(models.Model):
 
 	title = models.CharField(max_length=200)
 	published = models.BooleanField(default=False)
-	pub_date = models.DateField(auto_now=True)
-	update_date = models.DateField(auto_now_add=True)
+	pub_date = models.DateField(auto_now_add=True)
+	update_date = models.DateField(auto_now=True)
 	content = RichTextField(blank=True , null=True)
 	description = models.TextField()
 

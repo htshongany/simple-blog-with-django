@@ -47,20 +47,7 @@ def _search_posts(request):
     # page = request.GET.get("page")
     object_list = BlogPost.objects.filter(published=True)
 
-
-
     if search:
         object_list = object_list.filter(title__icontains=search)
         
-
-    # paginator = Paginator(object_list, POSTS_PER_PAGE)
-    # try:
-    #     object_list = paginator.page(search)
-    # except PageNotAnInteger:
-    #     object_list = paginator.page(1)
-    # except EmptyPage:
-    #     object_list = paginator.page(paginator.num_pages)
-
-    # print("\n \n \n \n \n \n \n ->",object_list.number ,"\n \n \n \n \n \n \n ")
-
     return object_list , search or ""
