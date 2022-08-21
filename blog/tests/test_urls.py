@@ -1,4 +1,4 @@
-from django.test import TestCase , SimpleTestCase
+from django.test import  SimpleTestCase
 from blog.views import list_post_view , category_view , DetailPost , search_view
 from django.urls import reverse , resolve 
 
