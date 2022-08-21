@@ -29,7 +29,7 @@ class BlogPost(models.Model):
 	def save(self, *args, **kwargs):
 
 		if self.published == True:
-			self.update_date = timezone.now()
+			self.update_date = timezone.now().date()
 
 		super(BlogPost, self).save(*args, **kwargs)
 
